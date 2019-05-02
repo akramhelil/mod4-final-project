@@ -1,5 +1,8 @@
 import React from 'react';
-import './App.css';
+import VideoDeck from './VideoDeck';
+
+import './assets/App.css';
+
 
 
 class App extends React.Component {
@@ -7,11 +10,11 @@ class App extends React.Component {
   state = {
     videos: []
   }
-
+//fetch the videos for the fornt page video Dex
   fetchVideos = () => {
-    fetch('http://localhost:4000/users')
+    fetch('http://localhost:4000/videos')
       .then(resp => resp.json())
-      .then(console.log)
+      .then(videos => this.setState({videos}))
   }
 
   componentDidMount() {
