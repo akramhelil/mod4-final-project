@@ -1,18 +1,17 @@
 import React from 'react';
 import './App.css';
 
-import React, { Component } from 'react'
 
-class App extends Component {
+class App extends React.Component {
 
   state = {
     videos: []
   }
 
   fetchVideos = () => {
-    fetch('')
+    fetch('http://localhost:4000/users')
       .then(resp => resp.json())
-      .then(videos => this.setState({ videos: videos }))
+      .then(console.log)
   }
 
   componentDidMount() {
