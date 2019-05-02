@@ -6,11 +6,12 @@
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
 
-Video.create(title: "What a funny Cat", url: "https://www.youtube.com/watch?v=WEkSYw3o5is", likes: 312)
-Video.create(title: "Family funny videos", url: "https://www.youtube.com/watch?v=hwrNQ93-568", likes: 543)
-Video.create(title: "Hilarious Cat Fails ★ Funny Cat Video Compilation", url: "https://www.youtube.com/watch?v=-kv1QSmIxGc", likes: 231)
-Video.create(title: " Funniest 😻 Cats and 🐶 Dogs - Awesome Funny Pet Animals' Life Videos 😇", url: "https://www.youtube.com/watch?v=5yFfCAaedgA", likes: 432)
-Video.create(title: "Cute baby animals Videos Compilation cute moment of the animals", url: "https://www.youtube.com/watch?v=YDLErVsbSRI", likes: 415)
+
+Video.create(title: "What a funny Cat", url: "https://www.youtube.com/embed/WEkSYw3o5is", likes: 312)
+Video.create(title: "Family funny videos", url: "https://www.youtube.com/embed/hwrNQ93-568", likes: 543)
+Video.create(title: "Hilarious Cat Fails ★ Funny Cat Video Compilation", url: "https://www.youtube.com/embed/-kv1QSmIxGc", likes: 231)
+Video.create(title: " Funniest 😻 Cats and 🐶 Dogs - Awesome Funny Pet Animals' Life Videos 😇", url: "https://www.youtube.com/embed/5yFfCAaedgA", likes: 432)
+Video.create(title: "Cute baby animals Videos Compilation cute moment of the animals", url: "https://www.youtube.com/embed/YDLErVsbSRI", likes: 415)
 
 
 
