@@ -9,7 +9,8 @@ export default class VideoDeck extends Component {
                 {this.props.videos.map(video =>
                     <VideoCard
                         video={video}
-                        key={video.id}
+                        key={video.id.videoId}
+                        handleImageClick={this.props.handleImageClick}
                     />
                 )}
             </div>
