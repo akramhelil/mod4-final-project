@@ -1,14 +1,22 @@
 import React, { Component } from 'react'
+import { Button, Form, Segment,Message, Menu, Container} from 'semantic-ui-react'
 
 export default class UserLogin extends Component {
+    // fetch for create user or lookup user 
     render() {
         return (
-            <div>
-                <form>  
-                    <input type="text" placeholder="Enter Username" name="uname" required></input>
-                    <button type="submit">Login</button>
-                </form>
-            </div>
+                  
+            <Menu size="massive" vertical  >
+                <Segment inverted>
+                <Form inverted >
+                    <Form.Input  fluid label='Username' placeholder='Username' />
+                    <Form.Input  fluid label='Password' placeholder='Password' />
+                    <Message success header='You all Set!' content="Happy Browsing!!!" />
+                <Button  type='submit'>Submit</Button>
+                </Form>
+                </Segment>
+                </Menu>
+        
         )
     }
 }

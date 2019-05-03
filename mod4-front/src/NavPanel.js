@@ -1,16 +1,18 @@
 import React, { Component } from 'react'
 import UserCard from './UserCard';
 import SearchCom from './SearchCom';
+import {Container} from 'semantic-ui-react'
 
 
 
 export default class NavPanel extends Component {
     render() {
         return (
-            <div>
-               <UserCard/>
+            <Container floated="left">   
                 <SearchCom fetchVideos={this.props.fetchVideos}/>
-            </div>
+                <br/>
+                <UserCard />
+            </Container>
         )
     }
 }

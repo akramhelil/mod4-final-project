@@ -4,7 +4,7 @@ import './assets/App.css';
 import NavPanel from './NavPanel';
 
 
-const API_KEY = 'AIzaSyCVv6nu0yprprLfzrpjiRkbLSrS7uPdik4'
+const API_KEY = 
 
 class App extends React.Component {
   
@@ -15,7 +15,7 @@ class App extends React.Component {
 
 //fetch the videos for the fornt page video Dex
   fetchVideos = (query= '') => {
-    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=20&q=${query}&type=video&key=${API_KEY}`)
+    fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${API_KEY}`)
       .then(resp => resp.json())
       .then(videos => this.setState({ videos: videos.items}) )
   }
@@ -24,7 +24,8 @@ class App extends React.Component {
     this.fetchVideos()
   }
 
-  handleImageClick= (id) => {
+  handleImageClick = (id) => {
+    
     console.log('ImageClicked', id)
   }
 
