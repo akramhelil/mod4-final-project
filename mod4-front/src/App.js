@@ -7,8 +7,6 @@ import Data from './data';
 // import SplitPane from 'react-split-pane'
 
 
-// const API_KEY = "AIzaSyCVv6nu0yprprLfzrpjiRkbLSrS7uPdik4"
-// const API_KEY = "AIzaSyAnPmsfU_QtSoXRSZXSVTt0fyWrbbh9p2I"
 // `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${API_KEY}`
 
 class App extends React.Component {
