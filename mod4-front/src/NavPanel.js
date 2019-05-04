@@ -6,21 +6,33 @@ import UserLibrary from './UserLibrary';
 
 const searchStyle = {
     margin: 20,
-    alignItems: "center"
+    alignItems: "center",
+    textAlign: "center"
 }
+
 
 export default class NavPanel extends Component {
     render() {
         return (
-            <Container>   
+            <Container >   
                 <div style={searchStyle}>
-                    <SearchCom fetchVideos={this.props.fetchVideos}/>
+                    <SearchCom fetchVideos={this.props.fetchVideos} />
                 </div>
-                <br />
-                <div>
+                <div style={searchStyle}>
                 <UserCard />
                 </div>
-                {this.props.userFav.slice(0, 5).map(video => <UserLibrary key={video.id.videoId} video={video}/> )}
+                <div style={searchStyle}>
+                <h2> 
+                  User Favortie Library
+                <hr/>
+                  </h2>
+                 {this.props.userFav.slice(0, 5).map(video => <UserLibrary
+                        key={video.id.videoId}
+                        video={video}
+                        style={searchStyle}
+                    />
+                    )}
+                </div>
             </Container>
         )
     }
