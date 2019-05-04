@@ -46,11 +46,11 @@ class App extends React.Component {
           <Grid.Column width={5}>
             <NavPanel fetchVideos={this.fetchVideos} userFav={Data.items}/>
           </Grid.Column>
-      <Grid.Column width={10}>
-      <VideoDeck videos={Data.items} handleImageClick={this.handleImageClick}/>
-      </Grid.Column>
-        </Grid.Row>
-        </Grid>
+          <Grid.Column width={10}>
+            <VideoDeck videos={Data.items} handleImageClick={this.handleImageClick}/>
+          </Grid.Column>
+          </Grid.Row>
+       </Grid>
     //   <SplitPane split="vertical" defaultSize={400}>
     //     <div>
     //   <NavPanel fetchVideos={this.fetchVideos}/>
