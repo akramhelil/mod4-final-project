@@ -20,7 +20,7 @@ export default class NavPanel extends Component {
                 <div>
                 <UserCard />
                 </div>
-                {this.props.userFav.slice(0, 5).map(video => <UserLibrary video={video}/> )}
+                {this.props.userFav.slice(0, 5).map(video => <UserLibrary key={video.id.videoId} video={video}/> )}
             </Container>
         )
     }
