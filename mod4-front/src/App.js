@@ -2,7 +2,7 @@ import React from 'react';
 import VideoDeck from './VideoDeck';
 import './assets/App.css';
 import NavPanel from './NavPanel';
-import { Grid, GridColumn } from 'semantic-ui-react';
+import { Grid} from 'semantic-ui-react';
 import Data from './data';
 // import SplitPane from 'react-split-pane'
 
