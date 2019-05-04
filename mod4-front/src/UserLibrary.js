@@ -1,10 +1,14 @@
 import React, { Component } from 'react'
-
-export default class UserFavoriteButton extends Component {
+import VideoCard from './VideoCard';
+export default class UserLibrary extends Component {
     render() {
         return (
             <div>
-                UserLibrary
+                <br/>
+                <h2>
+                User Favortie Library
+                </h2>
+               <VideoCard video={this.props.video}/>
             </div>
         )
     }

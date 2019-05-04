@@ -13,7 +13,7 @@ export default class VideoCard extends Component {
                 onClick={() => this.props.handleImageClick(this.props.video.id.videoId)}
                 value={this.props.video.id.videoId} /> 
                 <Card.Content>
-                  <Card.Header>{this.props.video.snippet.title}</Card.Header>
+                  <Card.Header>{this.props.video.snippet.title.slice(0,25)}...</Card.Header>
                   <Card.Meta> Channel: {this.props.video.snippet.channelTitle}</Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
