@@ -8,6 +8,7 @@
     "react-iframe": "^1.8.0",
     "react-player": "^1.11.0",
     "react-scripts": "3.0.0",
+    "react-split-pane": "^0.1.87",
     "semantic-ui-react": "^0.86.0"
   },
   "scripts": {

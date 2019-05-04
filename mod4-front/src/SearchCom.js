@@ -19,12 +19,13 @@ export default class SearchCom extends Component {
     render() {
         // console.log(this.props)
         return (
-                <Form onSubmit={this.handleSubmit} >
+          
+            <Form onSubmit={this.handleSubmit}>
                     <Input  onChange={this.handleChange}
                         value={this.state.query} type="text"
                         placeholder="Search ..."
                         action={{ icon: 'search' }}
-                    />
+                        />
                     <br/>
                 </Form>
 
