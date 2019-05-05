@@ -9,6 +9,11 @@ import Data from './data';
 
 // `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${API_KEY}`
 
+const dexStyle = {
+  margin: 20,
+  alignItems: "center"
+}
+
 class App extends React.Component {
   
   state = {
@@ -44,7 +49,7 @@ class App extends React.Component {
           <Grid.Column width={5}>
             <NavPanel fetchVideos={this.fetchVideos} userFav={Data.items}/>
           </Grid.Column>
-          <Grid.Column width={10}>
+          <Grid.Column width={10} style={dexStyle}>
             <VideoDeck videos={Data.items} handleImageClick={this.handleImageClick}/>
           </Grid.Column>
           </Grid.Row>

@@ -16,6 +16,12 @@ export default class NavPanel extends Component {
         return (
             <Container >   
                 <div style={searchStyle}>
+                    <div>
+                        <img src="./logo.png"
+                        alt="logo" width="150" height="150" />
+                    </div>
+                    <hr />
+                    <br/>
                     <SearchCom fetchVideos={this.props.fetchVideos} />
                 </div>
                 <div style={searchStyle}>
