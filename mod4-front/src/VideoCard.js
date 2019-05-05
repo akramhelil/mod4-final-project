@@ -20,7 +20,7 @@ export default class VideoCard extends Component {
                   <Card.Meta> Channel: {this.props.video.snippet.channelTitle}</Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                    <Icon size="large" name="video" />
+                    <Icon size="large" name="play" />
                     &nbsp;&nbsp;&nbsp;
                     <Button as='div' labelPosition='right'>
                     <Button icon>
