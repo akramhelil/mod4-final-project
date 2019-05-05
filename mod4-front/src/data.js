@@ -230,7 +230,7 @@ const Data =  {
               "height": 180
             },
             "high": {
-              "url": "https://i.ytimg.com/vi/hvYlHx0YPjQ/hqdefault.jpg",
+              "url": "https://i.ytimg.com/vi/MZjr18PBGPk/hqdefault.jpg",
               "width": 480,
               "height": 360
             }

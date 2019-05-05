@@ -3,28 +3,69 @@ import { Button, Form, Segment,Message, Menu} from 'semantic-ui-react'
 
 export default class UserLogin extends Component {
     stae = {
-        username: '',
-        password: ''
+        name: ''
+        // password: ''
     }   
-
-    // fetch for create user or lookup user 
     
+    // need to add password field to the back end
+    inputHandler = (e) => {
+        switch (e.target.name) {
+            case 'name':
+            return this.setState({
+                name: e.target.value
+            })
+            // case 'password':
+            // return this.setState({
+            //     passwrod: e.target.value
+            // })
+            default:
+        }
+        // console.log(e.target.value)
+    }
 
+    userLoginPost = () => {
+        fetch('http://localhost:4000/users', {
+        method: 'POST',
+        headers:
+        {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(this.state)
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+    
+    // fetch for create user or lookup user 
+    submitHandlerUser = (e) => {
+        e.preventDefault()
+        console.log("User Login Fetch Request", this.state)
+        this.userLoginPost()
+        // Create Password fiels at the backend. 
+        // Dont know we should do front end Oauth or Back end Oauth
+    }
 
     render() {
+        // console.log(this.state)
         return (
-            <Menu size="massive" vertical  >
+            <Menu size="massive" vertical>
                 <Segment inverted>
-                <Form onSubmit={this.submitHandlerUser} >
-                    <Form.Input  fluid label='Username' placeholder='Username' name="name" />
-                    <Form.Input  fluid label='Password' placeholder='Password' name="password" />
-                    <Message success header='You all Set!' content="Happy Browsing!!!" />
-                <Button   type='submit'>Login</Button>
-                <Button   type='submit'>Signup</Button>
-                </Form>
+                    <Form onSubmit={this.submitHandlerUser}>
+                         <Form.Input fluid label='Username'
+                             placeholder='Username' name="name"
+                            onChange={this.inputHandler} />
+                        <Form.Input fluid label='Password'
+                            placeholder='Password'
+                            name="password" 
+                            type="password"
+                            onChange={this.inputHandler} />
+                        <Message success
+                            header='You all Set!'
+                            content="Happy Browsing!!!" />
+                        <Button  type='submit'>Login</Button>
+                        &emsp;&emsp;
+                        <Button>Signup</Button>
+                    </Form>
                 </Segment>
-                </Menu>
-        
+             </Menu>
         )
     }
 }

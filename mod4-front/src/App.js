@@ -49,14 +49,6 @@ class App extends React.Component {
           </Grid.Column>
           </Grid.Row>
        </Grid>
-    //   <SplitPane split="vertical" defaultSize={400}>
-    //     <div>
-    //   <NavPanel fetchVideos={this.fetchVideos}/>
-    //    </div>
-    //     <div>
-    //     <VideoDeck videos={Data.items} handleImageClick={this.handleImageClick}/>
-    //    </div>
-    // </SplitPane>
     )
   }
 }
