@@ -8,7 +8,8 @@ const dexStyle = {
     alignItems: "center"
 }
 export default class VideoDeck extends Component {
-        
+
+       
     render() {
         return (
          <div style={dexStyle}>
@@ -16,10 +17,10 @@ export default class VideoDeck extends Component {
                 <Card.Group  itemsPerRow={3} >  
                 {this.props.videos.map(video =>
                     <VideoCard
-                    video={video}
-                    key={video.id.videoId}
-                    handleImageClick={this.props.handleImageClick}
-                    />
+                        video={video}
+                        key={video.id.videoId}
+                        addToFav={this.props.addToFav}
+                        />
                     )}
                 </Card.Group>  
             </Container>   

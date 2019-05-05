@@ -1,26 +1,59 @@
 import React, { Component } from 'react'
-import { Card, Image, Icon, Button, Label } from 'semantic-ui-react'
-// import Iframe from 'react-iframe'
+import { Card, Image, Icon, Button, Label, Modal} from 'semantic-ui-react'
+import Iframe from 'react-iframe'
+
+
+const buttonStyle = {
+    margin: 20,
+    alignItems: "center",
+    textAlign: "center"
+}
 
 export default class VideoCard extends Component {
-    // need to pull the data of likes from the back end onclick will be updating the
-    // liked video data front end and back end, and reset the state as well for this specific 
-    // component
-    // console.log(this.props.video)
+    
+    state = {
+        likes: this.props.video.likes
+    }
+
+    handleLikes = (prevState) => {
+        this.setState({
+            likes: prevState.likes += 1
+        })
+    }
+   
     render() {
-        // console.log(this.props.video)
+        console.log(this.props.video)
         return (
             <Card>
              <Image src={this.props.video.snippet.thumbnails.high.url}
                 alt="thubmnail"
-                onClick={() => this.props.handleImageClick(this.props.video.id.videoId)}
                 value={this.props.video.id.videoId} /> 
                 <Card.Content>
                   <Card.Header>{this.props.video.snippet.title.slice(0, 35)}...</Card.Header>
                   <Card.Meta> Channel: {this.props.video.snippet.channelTitle}</Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
-                    <Icon size="large" name="play" />
+                    <Modal size="small"
+                        trigger={<Icon size="large" name="play"
+                         />}>
+                        <Modal.Content image>
+                            <Iframe url={"https://www.youtube.com/embed/"+this.props.video.id.videoId}
+                                width="700px"
+                                height="450px"
+                                frameBorder="0" allow="accelerometer; autoplay;"
+                                allowFullscreen={true}> title='videos'
+                            </Iframe>
+                         </Modal.Content>
+                        <Button onClick={this.handleLikes}
+                            secondary style={buttonStyle}>
+                            <Icon name='heart' /> Like
+                        </Button>
+                        <Button
+                            secondary style={buttonStyle}
+                           onClick={() =>  this.props.addToFav(this.props.video)} >
+                            Add To Library
+                        </Button>
+                    </Modal>
                     &nbsp;&nbsp;&nbsp;
                     <Button as='div' labelPosition='right'>
                     <Button icon>
@@ -28,7 +61,7 @@ export default class VideoCard extends Component {
                         Likes
                     </Button>
                         <Label as='a' basic pointing='left'>
-                         {this.props.video.id.videoId.slice(0,5)}
+                         {this.state.likes}
                     </Label>
                     </Button>
                 </Card.Content>
