@@ -29,7 +29,7 @@ export default class NavPanel extends Component {
                 </div>
                 <div style={searchStyle}>
                 <h2> 
-                  User Favortie Library
+                  User Favorite Library
                 <hr/>
                   </h2>
                  {this.props.userFav.slice(0, 5).map(video => <UserLibrary

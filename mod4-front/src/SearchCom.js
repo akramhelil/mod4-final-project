@@ -24,7 +24,7 @@ export default class SearchCom extends Component {
                     <Input  onChange={this.handleChange}
                         value={this.state.query} type="text"
                         placeholder="Search ..."
-                        action={{ icon: 'search' }}
+                        action={{ icon: 'search', color: 'black'}}
                         />
                     <br/>
                 </Form>
