@@ -31,7 +31,7 @@ export default class NavPanel extends Component {
                 <h2> 
                   User Favorite Library
                 <hr/>
-                  </h2>
+                    </h2>
                  {this.props.userFav.slice(0, 5).map(video => <UserLibrary
                         key={video.id.videoId}
                         video={video}

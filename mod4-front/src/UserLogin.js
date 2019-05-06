@@ -3,8 +3,8 @@ import { Button, Form, Segment,Message, Menu} from 'semantic-ui-react'
 
 export default class UserLogin extends Component {
     stae = {
-        name: ''
-        // password: ''
+        name: '',
+        photo: ''
     }   
     
     // need to add password field to the back end
@@ -14,10 +14,10 @@ export default class UserLogin extends Component {
             return this.setState({
                 name: e.target.value
             })
-            // case 'password':
-            // return this.setState({
-            //     passwrod: e.target.value
-            // })
+            case 'photo':
+            return this.setState({
+                photo: e.target.value
+            })
             default:
         }
         // console.log(e.target.value)
@@ -39,7 +39,6 @@ export default class UserLogin extends Component {
         e.preventDefault()
         console.log("User Login Fetch Request", this.state)
         this.userLoginPost()
-        // Create Password fiels at the backend. 
         // Dont know we should do front end Oauth or Back end Oauth
     }
 
@@ -52,17 +51,17 @@ export default class UserLogin extends Component {
                          <Form.Input fluid label='Username'
                              placeholder='Username' name="name"
                             onChange={this.inputHandler} />
-                        <Form.Input fluid label='Password'
-                            placeholder='Password'
-                            name="password" 
-                            type="password"
+                        <Form.Input fluid label='Photo URL'
+                            placeholder='Photo URL'
+                            name="photo" 
+                            type="text"
                             onChange={this.inputHandler} />
                         <Message success
                             header='You all Set!'
                             content="Happy Browsing!!!" />
                         <Button  type='submit'>Login</Button>
                         &emsp;&emsp;
-                        <Button>Signup</Button>
+                        {/* <Button>Signup</Button> */}
                     </Form>
                 </Segment>
              </Menu>

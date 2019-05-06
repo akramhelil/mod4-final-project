@@ -15,10 +15,22 @@ export default class VideoCard extends Component {
         likes: 0
     }
 
+    // likesFetch = () => {
+    //     fetch('URL/id', {
+    //     method: 'PATCH',
+    //     headers:
+    //     {'Content-Type': 'application/json', 'Accept': 'application/json'},
+    //     body: JSON.stringify({ data-key-value })
+    //     })
+    //     .then(res => res.json())
+    //     .then(console.log)
+    // }
+
     handleLikes = () => {
         this.setState({
             likes: this.state.likes + 1
         })
+    
     }
    
     render() {

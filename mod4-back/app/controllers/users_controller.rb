@@ -7,6 +7,7 @@ class UsersController < ApplicationController
 
     def create
         @user = User.find_or_create_by(user_params)
+        # we need something that can give to the front end that reack the current user state
         render json: @user
       end   
 
