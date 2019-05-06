@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { Button, Form, Segment,Message, Menu} from 'semantic-ui-react'
+import { Button, Form, Segment, Message, Menu } from 'semantic-ui-react'
+import { Route, Link } from 'react-router-dom' 
 
 export default class UserLogin extends Component {
     state = {
         name: '',
         password: ''
-    }   
-    
+    }
+
     // need to add password field to the back end
     inputHandler = (e) => {
         this.setState({
-           [ e.target.name]: e.target.value
+            [e.target.name]: e.target.value
         })
         // switch (e.target.name) {
         //     case 'name':
@@ -28,15 +29,15 @@ export default class UserLogin extends Component {
 
     userLoginPost = () => {
         fetch('http://localhost:4000/users', {
-        method: 'POST',
-        headers:
-        {'Content-Type': 'application/json', 'Accept': 'application/json'},
-        body: JSON.stringify(this.state)
+            method: 'POST',
+            headers:
+                { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(this.state)
         })
-        .then(res => res.json())
-        .then(console.log)
+            .then(res => res.json())
+            .then(console.log)
     }
-    
+
     // fetch for create user or lookup user 
     submitHandlerUser = (e) => {
         e.preventDefault()
@@ -51,24 +52,24 @@ export default class UserLogin extends Component {
             <Menu size="massive" vertical>
                 <Segment inverted>
                     <Form onSubmit={this.submitHandlerUser}>
-                         <Form.Input fluid label='Username'
-                             placeholder='Username' name="name"
+                        <Form.Input fluid
+                            placeholder='Username' name="name"
                             onChange={this.inputHandler} />
-                        <Form.Input fluid label='Password'
+                        <Form.Input fluid
                             placeholder='Password'
-                            name="password" 
+                            name="password"
                             type="password"
                             onChange={this.inputHandler} />
                         <Message success
                             header='You all Set!'
                             content="Happy Browsing!!!" />
-                        <Button  type='submit'>Login</Button>
+                        <Button type='submit'>Login</Button>
                         &emsp;&emsp;
 
-                        <Button>Signup</Button>
+                        <Button><Link to='/signup'>Signup</Link></Button>
                     </Form>
                 </Segment>
-             </Menu>
+            </Menu>
         )
     }
 }

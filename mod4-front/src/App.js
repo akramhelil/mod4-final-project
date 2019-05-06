@@ -4,9 +4,11 @@ import './assets/App.css';
 import NavPanel from './NavPanel';
 import { Grid } from 'semantic-ui-react';
 import Data from './data';
+import { Route, Switch } from 'react-router-dom'
+import SignUp from './SignUp'
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
-  
+
 // const API_URL = `https://www.googleapis.com/youtube/v3/search?part=snippet&maxResults=10&q=${query}&type=video&key=${API_KEY}`
 
 const dexStyle = {
@@ -39,10 +41,10 @@ class App extends React.Component {
       })
   }
 
-    componentDidMount() {
-      this.fetchVideos()
-      // this is where we will set the localStorage
-    }
+  componentDidMount() {
+    this.fetchVideos()
+    // this is where we will set the localStorage
+  }
 
   createVideo = (videoObj) => {
     let newVideo = {
@@ -68,16 +70,17 @@ class App extends React.Component {
     }
 
     fetch('http://localhost:4000/favorites', {
-    method: 'POST',
-    headers:
+      method: 'POST',
+      headers:
       {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-    body: JSON.stringify(favVideo)
+      body: JSON.stringify(favVideo)
     })
-    .then(res => res.json())
-    .then(console.log)
+      .then(res => res.json())
+      .then(console.log)
+
   }
 
   // Current User funtion or Validation both front and back 
@@ -87,18 +90,24 @@ class App extends React.Component {
   render() {
     // console.log(this.state.videos)
     return (
-      <Grid>
-        <Grid.Row>
-          <Grid.Column width={5}>
-            <NavPanel fetchVideos={this.fetchVideos} userFav={Data.items} />
-          </Grid.Column>
-          <Grid.Column width={10} style={dexStyle}>
-            <VideoDeck videos={this.state.videos}
-              addToFav={this.addToFav}
-            />
-          </Grid.Column>
-        </Grid.Row>
-      </Grid>
+      <div>
+        <Switch>
+          <Route path='/signup' component={SignUp} />
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <NavPanel fetchVideos={this.fetchVideos} userFav={Data.items} />
+              </Grid.Column>
+              <Grid.Column width={10} style={dexStyle}>
+                <VideoDeck videos={this.state.videos}
+                  addToFav={this.addToFav}
+                />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+        </Switch>
+      </div >
+
     )
   }
 }

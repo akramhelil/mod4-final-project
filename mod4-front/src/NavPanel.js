@@ -1,8 +1,8 @@
 import React, { Component } from 'react'
-import UserCard from './UserCard';
 import SearchCom from './SearchCom';
 import {Container} from 'semantic-ui-react'
 import UserLibrary from './UserLibrary';
+import UserLogin from './UserLogin'
 
 const searchStyle = {
     margin: 20,
@@ -25,7 +25,7 @@ export default class NavPanel extends Component {
                     <SearchCom fetchVideos={this.props.fetchVideos} />
                 </div>
                 <div style={searchStyle}>
-                <UserCard />
+                    <UserLogin />
                 </div>
                 <div style={searchStyle}>
                 <h2> 

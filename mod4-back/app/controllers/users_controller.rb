@@ -6,6 +6,7 @@ class UsersController < ApplicationController
     end
 
     def create
+      # byebug
         @user = User.find_or_create_by(user_params)
         # we need something that can give to the front end that reack the current user state
         render json: @user
@@ -14,7 +15,7 @@ class UsersController < ApplicationController
       private
   
       def user_params
-        params.permit(:name, :photo)
+        params.permit(:name, :photo, :password_digest)
       end
 
 end
