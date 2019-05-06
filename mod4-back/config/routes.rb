@@ -3,4 +3,6 @@ Rails.application.routes.draw do
   resources :users
   resources :favorites
   resources :videos
+
+  post '/login', to: 'auth#login'
 end
