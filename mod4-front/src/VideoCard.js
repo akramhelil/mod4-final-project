@@ -15,26 +15,32 @@ export default class VideoCard extends Component {
         likes: 0
     }
 
-    // likesFetch = () => {
-    //     fetch('URL/id', {
-    //     method: 'PATCH',
-    //     headers:
-    //     {'Content-Type': 'application/json', 'Accept': 'application/json'},
-    //     body: JSON.stringify({ data-key-value })
-    //     })
-    //     .then(res => res.json())
-    //     .then(console.log)
-    // }
-
     handleLikes = () => {
         this.setState({
             likes: this.state.likes + 1
-        })
-    
+        },this.likesFetch() )
     }
+
+    likesFetch = () => {
+        const likedVideo = {
+            title: this.props.video.snippet.title,
+            url: this.props.video.id.videoId,
+            likes: this.state.likes
+        }
+
+        fetch('http://localhost:4000/videos', {
+        method: 'POST',
+        headers:
+        {'Content-Type': 'application/json', 'Accept': 'application/json'},
+        body: JSON.stringify(likedVideo)
+        })
+        .then(res => res.json())
+        .then(console.log)
+    }
+
    
     render() {
-        console.log(this.props.video)
+    
         return (
             <Card>
              <Image src={this.props.video.snippet.thumbnails.high.url}

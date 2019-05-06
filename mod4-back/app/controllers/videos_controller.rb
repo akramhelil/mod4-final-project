@@ -6,9 +6,15 @@ class VideosController < ApplicationController
     end
 
     def create
-        @video = Video.create(video_params)
-        render json: @video
-      end   
+        video = Video.find_by(url: params[:url])
+      if video
+        video.update_attributes(likes: video.likes +=1 )
+        # video.save
+      else
+        video = Video.create(video_params)
+      end
+        render json: video
+    end   
 
     def update
         @video = video.find_by(id: params[:id])

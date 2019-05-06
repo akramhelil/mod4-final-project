@@ -2,25 +2,28 @@ import React, { Component } from 'react'
 import { Button, Form, Segment,Message, Menu} from 'semantic-ui-react'
 
 export default class UserLogin extends Component {
-    stae = {
+    state = {
         name: '',
-        photo: ''
+        password: ''
     }   
     
     // need to add password field to the back end
     inputHandler = (e) => {
-        switch (e.target.name) {
-            case 'name':
-            return this.setState({
-                name: e.target.value
-            })
-            case 'photo':
-            return this.setState({
-                photo: e.target.value
-            })
-            default:
-        }
-        // console.log(e.target.value)
+        this.setState({
+           [ e.target.name]: e.target.value
+        })
+        // switch (e.target.name) {
+        //     case 'name':
+        //     return this.setState({
+        //         name: e.target.value
+        //     })
+        //     case 'password':
+        //     return this.setState({
+        //         password: e.target.value
+        //     })
+        //     default:
+        // }
+        // // console.log(e.target.value)
     }
 
     userLoginPost = () => {
@@ -51,17 +54,18 @@ export default class UserLogin extends Component {
                          <Form.Input fluid label='Username'
                              placeholder='Username' name="name"
                             onChange={this.inputHandler} />
-                        <Form.Input fluid label='Photo URL'
-                            placeholder='Photo URL'
-                            name="photo" 
-                            type="text"
+                        <Form.Input fluid label='Password'
+                            placeholder='Password'
+                            name="password" 
+                            type="password"
                             onChange={this.inputHandler} />
                         <Message success
                             header='You all Set!'
                             content="Happy Browsing!!!" />
                         <Button  type='submit'>Login</Button>
                         &emsp;&emsp;
-                        {/* <Button>Signup</Button> */}
+
+                        <Button>Signup</Button>
                     </Form>
                 </Segment>
              </Menu>

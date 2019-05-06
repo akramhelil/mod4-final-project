@@ -64,6 +64,7 @@ class App extends React.Component {
     const favVideo = {
       video_id: videoObj.id
       // user_id: this.state.currentUser.id
+      // post request Fetch to the Favorite 
     }
 
     fetch('http://localhost:4000/favorites', {
