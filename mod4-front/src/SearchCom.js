@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import { Button } from 'semantic-ui-react'
+import { Input, Form } from 'semantic-ui-react'
 
 export default class SearchCom extends Component {
     state = {
@@ -19,13 +19,16 @@ export default class SearchCom extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
-                <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} value={this.state.query} style={{ fontSize: 25 }} type="text" placeholder="Search ..." />
-                    <Button primary>Submit</Button>
+          
+            <Form onSubmit={this.handleSubmit}>
+                    <Input  onChange={this.handleChange}
+                        value={this.state.query} type="text"
+                        placeholder="Search ..."
+                        action={{ icon: 'search', color: 'black'}}
+                        />
+                    <br/>
+                </Form>
 
-                </form>
-            </div>
         )
     }
 }

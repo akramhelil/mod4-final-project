@@ -1,27 +1,71 @@
 import React, { Component } from 'react'
-import LikeButton from './LikeButton';
-// import Iframe from 'react-iframe'
-export default class VideoCard extends Component {
+import { Card, Image, Icon, Button, Label, Modal} from 'semantic-ui-react'
+import Iframe from 'react-iframe'
 
+
+const buttonStyle = {
+    margin: 20,
+    alignItems: "center",
+    textAlign: "center"
+}
+
+export default class VideoCard extends Component {
+    
+    state = {
+        likes: this.props.video.likes
+    }
+
+    handleLikes = (prevState) => {
+        this.setState({
+            likes: prevState.likes += 1
+        })
+    }
+   
     render() {
-        // console.log(this.props.video.id.videoId)
+        console.log(this.props.video)
         return (
-            <div>
-                <div>
-                    <h2>{this.props.video.snippet.title}</h2>
-                    <img src={this.props.video.snippet.thumbnails.high.url}
-                        alt="thubmnail"
-                        onClick={() => this.props.handleImageClick(this.props.video.id.videoId)}
-                        value={this.props.video.id.videoId}
-                    />
-                    {/* <Iframe url={"https://www.youtube.com/embed/"+this.props.video.id.videoId}
-                    frameBorder="5" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowFullscreen={true} id={this.props.video.id}> title='videos'</Iframe> */}
-                    <LikeButton videoId={this.props.video.id.videoId} />
-                    <h2>
-                    {this.props.video.likes}
-                    </h2>
-                </div>
-            </div>
+            <Card>
+             <Image src={this.props.video.snippet.thumbnails.high.url}
+                alt="thubmnail"
+                value={this.props.video.id.videoId} /> 
+                <Card.Content>
+                  <Card.Header>{this.props.video.snippet.title.slice(0, 35)}...</Card.Header>
+                  <Card.Meta> Channel: {this.props.video.snippet.channelTitle}</Card.Meta>
+                </Card.Content>
+                <Card.Content extra>
+                    <Modal size="small"
+                        trigger={<Icon size="large" name="play"
+                         />}>
+                        <Modal.Content image>
+                            <Iframe url={"https://www.youtube.com/embed/"+this.props.video.id.videoId}
+                                width="700px"
+                                height="450px"
+                                frameBorder="0" allow="accelerometer; autoplay;"
+                                allowFullscreen={true}> title='videos'
+                            </Iframe>
+                         </Modal.Content>
+                        <Button onClick={this.handleLikes}
+                            secondary style={buttonStyle}>
+                            <Icon name='heart' /> Like
+                        </Button>
+                        <Button
+                            secondary style={buttonStyle}
+                           onClick={() =>  this.props.addToFav(this.props.video)} >
+                            Add To Library
+                        </Button>
+                    </Modal>
+                    &nbsp;&nbsp;&nbsp;
+                    <Button as='div' labelPosition='right'>
+                    <Button icon>
+                         <Icon name='heart'/>
+                        Likes
+                    </Button>
+                        <Label as='a' basic pointing='left'>
+                         {this.state.likes}
+                    </Label>
+                    </Button>
+                </Card.Content>
+            </Card>
         )
     }
 }

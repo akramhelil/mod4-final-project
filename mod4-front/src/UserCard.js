@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
+import UserLogin from './UserLogin';
 
+const divStyle = {
+    alignItems: "center"
+}
 export default class UserCard extends Component {
+
     render() {
         return (
-            <div>
-                <h1>
-
-                UserCard
-                </h1>
-            </div>
-        )
+            <div style={divStyle}>
+                <UserLogin />
+          </div>
+    )
     }
 }
