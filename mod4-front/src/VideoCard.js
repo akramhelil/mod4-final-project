@@ -12,12 +12,12 @@ const buttonStyle = {
 export default class VideoCard extends Component {
     
     state = {
-        likes: this.props.video.likes
+        likes: 0
     }
 
-    handleLikes = (prevState) => {
+    handleLikes = () => {
         this.setState({
-            likes: prevState.likes += 1
+            likes: this.state.likes + 1
         })
     }
    
