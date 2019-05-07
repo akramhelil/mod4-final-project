@@ -40,6 +40,7 @@ export default class UserLogin extends Component {
                     this.props.setCurrentUser(response)
                 }
             })
+            this.props.history.push(`/`)
     }
 
     // fetch for create user or lookup user 
