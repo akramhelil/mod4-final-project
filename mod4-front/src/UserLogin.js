@@ -1,7 +1,14 @@
 import React, { Component } from 'react'
 import { Button, Form, Segment, Message, Menu } from 'semantic-ui-react'
-import { Route, Link } from 'react-router-dom' 
+// import { Link } from 'react-router-dom' 
 
+const loginStyle = {
+    marginTop: 150,
+    marginLeft: 500,
+    marginRight: 500,
+    // alignItems: "center",
+    textAlign: "center"
+}
 export default class UserLogin extends Component {
     state = {
         name: '',
@@ -16,7 +23,7 @@ export default class UserLogin extends Component {
     }
 
     userLoginPost = () => {
-        fetch('http://localhost:4000/users', {
+        fetch('http://localhost:4000/login', {
             method: 'POST',
             headers:
             {
@@ -28,10 +35,9 @@ export default class UserLogin extends Component {
             .then(res => res.json())
             .then(response => {
                 if (response.errors) {
-                    alert(response.errors) 
+                    alert("Sign In Something Went Wrong") 
                 } else {
                     this.props.setCurrentUser(response)
-                    // this.props.history.push(`/`)
                 }
             })
     }
@@ -45,6 +51,7 @@ export default class UserLogin extends Component {
     render() {
         // console.log(this.state)
         return (
+            <div style={loginStyle}>
             <Menu size="massive" vertical>
                 <Segment inverted>
                     <Form onSubmit={this.submitHandlerUser}>
@@ -63,6 +70,7 @@ export default class UserLogin extends Component {
                     </Form>
                 </Segment>
             </Menu>
+        </div>
         )
     }
 }

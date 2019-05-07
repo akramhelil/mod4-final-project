@@ -20,6 +20,7 @@ export default class VideoDeck extends Component {
                         video={video}
                         key={video.id.videoId}
                         addToFav={this.props.addToFav}
+                        currentUser={this.props.currentUser}
                         />
                     )}
                 </Card.Group>  

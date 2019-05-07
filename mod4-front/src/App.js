@@ -7,6 +7,7 @@ import Data from './data';
 import { Route, Switch } from 'react-router-dom'
 import SignUp from './SignUp'
 // import { Fragment } from 'react'
+import UserLogin from './UserLogin';
 
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
@@ -104,6 +105,9 @@ class App extends React.Component {
         <Route path='/signup' render={(props) => {
           return <SignUp setCurrentUser={this.setCurrentUser} {...props} />
         }} />
+        <Route path='/login' render={(props) => {
+          return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
+        }} />
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>
@@ -118,8 +122,11 @@ class App extends React.Component {
             </Grid.Column>
             <Grid.Column width={10} style={dexStyle}>
               <Route path='/' render={(routeProps) => {
-                return <VideoDeck {...routeProps} videos={this.state.videos}
+                return <VideoDeck
+                  {...routeProps}
+                  videos={this.state.videos}
                   addToFav={this.addToFav}
+                  currentUser={this.state.currentUser}
                 />
               }} />
             </Grid.Column>

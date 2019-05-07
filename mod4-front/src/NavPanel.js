@@ -1,15 +1,21 @@
 import React, { Component } from 'react'
 import SearchCom from './SearchCom';
-import {Container} from 'semantic-ui-react'
+import {Container, Button} from 'semantic-ui-react'
 import UserLibrary from './UserLibrary';
 import UserLogin from './UserLogin'
-import SignUp from './SignUp';
+// import SignUp from './SignUp';
 import { Link, Route } from 'react-router-dom'
 
 
 
 const searchStyle = {
     margin: 20,
+    alignItems: "center",
+    textAlign: "center"
+}
+
+const button = {
+    margin: 50,
     alignItems: "center",
     textAlign: "center"
 }
@@ -45,14 +51,21 @@ export default class NavPanel extends Component {
                         setCurrentUser={this.props.setCurrentUser}
                         />
                        )}
-                    </div> :
-                    <div style={searchStyle}>
-                        <UserLogin
-                            setCurrentUser={this.props.setCurrentUser} />
-                    </div>
+                        </div> :
+                        <React.Fragment>
+                            <Button style={button}>
+                             <Link to="/signup">Sign Up</Link>
+                            </Button>
+                            <Button style={button}>      
+                             <Link to="/login">Log In</Link>
+                            </Button>
+                        </React.Fragment>
+                    // <div style={searchStyle}>
+                    //     <UserLogin
+                    //         setCurrentUser={this.props.setCurrentUser} />
+                    // </div>
                     }
-                    {/* <Route path="/singup" render={<SignUp  setCurrentUser={this.props.setCurrentUser} />} /> */}
-                    <Link to="/signup">SignUp</Link>
+                  
                 </Container>
             </React.Fragment>
         )
