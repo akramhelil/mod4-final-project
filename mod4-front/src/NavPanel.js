@@ -51,7 +51,7 @@ export default class NavPanel extends Component {
                             setCurrentUser={this.props.setCurrentUser} />
                     </div>
                     }
-                    <Route path="/singup" render={<SignUp  setCurrentUser={this.props.setCurrentUser} />} />
+                    {/* <Route path="/singup" render={<SignUp  setCurrentUser={this.props.setCurrentUser} />} /> */}
                     <Link to="/signup">SignUp</Link>
                 </Container>
             </React.Fragment>

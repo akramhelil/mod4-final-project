@@ -101,7 +101,9 @@ class App extends React.Component {
     console.log(this.state.currentUser)
     return (
          <Switch>
-          <Route path='/signup' component={SignUp} />
+          <Route path='/signup' render={() => {
+            return <SignUp setCurrentUser={this.setCurrentUser} />
+          }} />
           <Grid>
             <Grid.Row>
             <Grid.Column width={5}>
