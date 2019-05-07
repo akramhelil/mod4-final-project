@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import FavVideoCard from './FavVideoCard';
 import { Card,Container } from 'semantic-ui-react';
-
+import { Link } from 'react-router-dom';
 
 const dexStyle = {
     margin: 20,
@@ -25,7 +25,10 @@ class FavVideo extends Component {
                     )}
                 </Card.Group>  
             </Container>   
-         </div>
+                </div>
+                <Link to="/">
+                    <h1>Go Back</h1>
+                </Link>
     </div>
         );
     }

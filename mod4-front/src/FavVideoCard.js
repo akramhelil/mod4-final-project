@@ -10,7 +10,7 @@ const buttonStyle = {
 
 class FavVideoCard extends Component {
     
-    
+
     render() {
         return (
             <div>
@@ -38,6 +38,7 @@ class FavVideoCard extends Component {
                         </Button>
                 </Card.Content>
             </Card>
+            
          </div>
         )
     }
