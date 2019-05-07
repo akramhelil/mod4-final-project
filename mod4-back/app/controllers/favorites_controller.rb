@@ -16,8 +16,8 @@ class FavoritesController < ApplicationController
         render json: @favorite
       end
 
-      def user_params
-        params.permit(:user_id, :video_id)
+      def favorite_params
+        params.require(:favorite).permit(:user_id, :video_id)
       end
 
 

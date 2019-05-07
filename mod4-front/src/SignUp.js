@@ -43,7 +43,8 @@ class SignUp extends Component {
                    this.props.setCurrentUser(response)
                 }
             }
-        )
+            )
+            this.props.history.push(`/`)
     }
 
 

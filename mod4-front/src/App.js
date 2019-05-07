@@ -62,7 +62,7 @@ class App extends React.Component {
       method: 'POST',
       headers:
         { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify({video: newVideo})
+      body: JSON.stringify({ video: newVideo })
     })
       .then(res => res.json())
       .then(favVid => this.addToFav(favVid))
@@ -70,10 +70,10 @@ class App extends React.Component {
 
   addToFav = (favVid) => {
     const favVideo = {
-        video_id: favVid.id,
-        user_id: this.state.currentUser.id
+      video_id: favVid.id,
+      user_id: this.state.currentUser.id
     }
-     fetch('http://localhost:4000/favorites', {
+    fetch('http://localhost:4000/favorites', {
       method: 'POST',
       headers:
       {
@@ -89,10 +89,10 @@ class App extends React.Component {
 
   setCurrentUser = (response) => {
     this.setState({
-        currentUser: response.user
+      currentUser: response.user
     }, () => {
-        localStorage.setItem("token", response.token)
-    })  
+      localStorage.setItem("token", response.token)
+    })
   }
 
 
@@ -100,12 +100,12 @@ class App extends React.Component {
   render() {
     console.log(this.state.currentUser)
     return (
-         <Switch>
-          <Route path='/signup' render={() => {
-            return <SignUp setCurrentUser={this.setCurrentUser} />
-          }} />
-          <Grid>
-            <Grid.Row>
+      <Switch>
+        <Route path='/signup' render={(props) => {
+          return <SignUp setCurrentUser={this.setCurrentUser} {...props} />
+        }} />
+        <Grid>
+          <Grid.Row>
             <Grid.Column width={5}>
               <Route path="/" render={(routeProps) => {
                 return <NavPanel
@@ -114,18 +114,18 @@ class App extends React.Component {
                   setCurrentUser={this.setCurrentUser}
                   currentUser={this.state.currentUser}
                   {...routeProps} />
-              }}/>
-              </Grid.Column>
-              <Grid.Column width={10} style={dexStyle}>
-              <Route path='/'render={(routeProps) => {
+              }} />
+            </Grid.Column>
+            <Grid.Column width={10} style={dexStyle}>
+              <Route path='/' render={(routeProps) => {
                 return <VideoDeck {...routeProps} videos={this.state.videos}
-                addToFav={this.addToFav}
+                  addToFav={this.addToFav}
                 />
               }} />
-              </Grid.Column>
-            </Grid.Row>
-          </Grid>
-         </Switch>
+            </Grid.Column>
+          </Grid.Row>
+        </Grid>
+      </Switch>
     )
   }
 }
