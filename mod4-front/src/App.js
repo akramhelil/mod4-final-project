@@ -6,6 +6,8 @@ import { Grid } from 'semantic-ui-react';
 import Data from './data';
 import { Route, Switch } from 'react-router-dom'
 import SignUp from './SignUp'
+// import { Fragment } from 'react'
+
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
 
@@ -41,35 +43,37 @@ class App extends React.Component {
       })
   }
 
+
+
   componentDidMount() {
     this.fetchVideos()
     // this is where we will set the localStorage
   }
 
   createVideo = (videoObj) => {
+    console.log(videoObj)
     let newVideo = {
       title: videoObj.snippet.title,
       url: videoObj.id.videoId,
-      likes: 1
+      likes: 1,
+      thumbnails: null
     }
     fetch('http://localhost:4000/videos', {
       method: 'POST',
       headers:
         { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-      body: JSON.stringify(newVideo)
+      body: JSON.stringify({video: newVideo})
     })
       .then(res => res.json())
-      .then(videoObj => this.addToFav(videoObj))
+      .then(favVid => this.addToFav(favVid))
   }
 
-  addToFav = (videoObj) => {
+  addToFav = (favVid) => {
     const favVideo = {
-      video_id: videoObj.id
-      // user_id: this.state.currentUser.id
-      // post request Fetch to the Favorite 
+        video_id: favVid.id,
+        user_id: this.state.currentUser.id
     }
-
-    fetch('http://localhost:4000/favorites', {
+     fetch('http://localhost:4000/favorites', {
       method: 'POST',
       headers:
       {
@@ -83,31 +87,43 @@ class App extends React.Component {
 
   }
 
-  // Current User funtion or Validation both front and back 
-  //set the current user and track the current user
+  setCurrentUser = (response) => {
+    this.setState({
+        currentUser: response.user
+    }, () => {
+        localStorage.setItem("token", response.token)
+    })  
+  }
+
 
 
   render() {
-    // console.log(this.state.videos)
+    console.log(this.state.currentUser)
     return (
-      <div>
-        <Switch>
+         <Switch>
           <Route path='/signup' component={SignUp} />
           <Grid>
             <Grid.Row>
-              <Grid.Column width={5}>
-                <NavPanel fetchVideos={this.fetchVideos} userFav={Data.items} />
+            <Grid.Column width={5}>
+              <Route path="/" render={(routeProps) => {
+                return <NavPanel
+                  fetchVideos={this.fetchVideos}
+                  userFav={Data.items}
+                  setCurrentUser={this.setCurrentUser}
+                  currentUser={this.state.currentUser}
+                  {...routeProps} />
+              }}/>
               </Grid.Column>
               <Grid.Column width={10} style={dexStyle}>
-                <VideoDeck videos={this.state.videos}
-                  addToFav={this.addToFav}
+              <Route path='/'render={(routeProps) => {
+                return <VideoDeck {...routeProps} videos={this.state.videos}
+                addToFav={this.addToFav}
                 />
+              }} />
               </Grid.Column>
             </Grid.Row>
           </Grid>
-        </Switch>
-      </div >
-
+         </Switch>
     )
   }
 }

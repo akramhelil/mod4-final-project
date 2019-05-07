@@ -25,7 +25,8 @@ export default class VideoCard extends Component {
         const likedVideo = {
             title: this.props.video.snippet.title,
             url: this.props.video.id.videoId,
-            likes: 1
+            likes: 1,
+            thumbnails:this.props.video.snippet.thumbnails.high.url
         }
 
         fetch('http://localhost:4000/videos', {
@@ -40,7 +41,6 @@ export default class VideoCard extends Component {
 
 
     render() {
-
         return (
             <Card>
                 <Image src={this.props.video.snippet.thumbnails.high.url}
@@ -48,7 +48,6 @@ export default class VideoCard extends Component {
                     value={this.props.video.id.videoId} />
                 <Card.Content>
                     <Card.Header>{this.props.video.snippet.title.slice(0, 35)}...</Card.Header>
-                    <Card.Meta> Channel: {this.props.video.snippet.channelTitle}</Card.Meta>
                 </Card.Content>
                 <Card.Content extra>
                     <Modal size="small"

@@ -13,37 +13,33 @@ export default class UserLogin extends Component {
         this.setState({
             [e.target.name]: e.target.value
         })
-        // switch (e.target.name) {
-        //     case 'name':
-        //     return this.setState({
-        //         name: e.target.value
-        //     })
-        //     case 'password':
-        //     return this.setState({
-        //         password: e.target.value
-        //     })
-        //     default:
-        // }
-        // // console.log(e.target.value)
     }
 
     userLoginPost = () => {
         fetch('http://localhost:4000/users', {
             method: 'POST',
             headers:
-                { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            {
+                'Content-Type': 'application/json', 'Accept': 'application/json'
+                
+            },
             body: JSON.stringify(this.state)
         })
             .then(res => res.json())
-            .then(console.log)
+            .then(response => {
+                if (response.errors) {
+                    alert(response.errors) 
+                } else {
+                    this.props.setCurrentUser(response)
+                    // this.props.history.push(`/`)
+                }
+            })
     }
 
     // fetch for create user or lookup user 
     submitHandlerUser = (e) => {
         e.preventDefault()
-        console.log("User Login Fetch Request", this.state)
         this.userLoginPost()
-        // Dont know we should do front end Oauth or Back end Oauth
     }
 
     render() {
@@ -64,9 +60,6 @@ export default class UserLogin extends Component {
                             header='You all Set!'
                             content="Happy Browsing!!!" />
                         <Button type='submit'>Login</Button>
-                        &emsp;&emsp;
-
-                        <Button><Link to='/signup'>Signup</Link></Button>
                     </Form>
                 </Segment>
             </Menu>

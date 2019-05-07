@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { Segment, Form, Message, Button } from 'semantic-ui-react'
+import { Segment, Form, Button } from 'semantic-ui-react'
 
 const signupStyle = {
     marginTop: 150,
@@ -14,7 +14,8 @@ class SignUp extends Component {
     state = {
         name: '',
         photo: '',
-        password: ''
+        password: '',
+        passwordConfirmation:''
     }
     onChange = (e) => {
         this.setState({
@@ -22,7 +23,7 @@ class SignUp extends Component {
         })
     }
 
-    handleSignup = () => {
+    createUser = () => {
         const newUser = {
             photo: this.state.photo,
             name: this.state.name,
@@ -32,11 +33,19 @@ class SignUp extends Component {
             method: 'POST',
             headers:
                 { 'Content-Type': 'application/json', 'Accept': 'application/json' },
-            body: JSON.stringify(newUser)
+            body: JSON.stringify({user: newUser})
         })
             .then(res => res.json())
-            .then(console.log)
+            .then((response) => {
+                if (response.errors){
+                    alert("Something went Wrong!")
+                } else {
+                   this.props.setCurrentUser(response)
+                }
+            }
+        )
     }
+
 
 
     render() {
@@ -44,12 +53,11 @@ class SignUp extends Component {
             <div style={signupStyle}>
                 <Segment inverted>
                     <h2>Signup Form</h2>
-                    <Form onSubmit={this.handleSignup} >
+                    <Form onSubmit={this.createUser} >
                         <Form.Input onChange={this.onChange} fluid placeholder='Username' name="name" />
                         <Form.Input onChange={this.onChange} fluid placeholder='Photo Url' name="photo" />
                         <Form.Input onChange={this.onChange} fluid placeholder='Password' name="password" type="password" />
-                        <Form.Input onChange={this.onChange} fluid placeholder='Confrim Password' name="password" type="password" />
-                        <Message success header='You all Set!' content="Happy Browsing!!!" />
+                        <Form.Input onChange={this.onChange} fluid placeholder='Confrim Password' name="password_confirmation" type="password" />
                         <Button type='submit'>Submit</Button>
                     </Form>
                 </Segment>

@@ -6,16 +6,20 @@ class UsersController < ApplicationController
     end
 
     def create
-      # byebug
-        @user = User.find_or_create_by(user_params)
-        # we need something that can give to the front end that reack the current user state
-        render json: @user
-      end   
+      user = User.new(user_params)
+      if user
+        user.save
+        token = encode_token(user.id)
+        render json: {user: UserSerializer.new(user), token: token}
+      else
+        render json: {errors: user.errors.full_messages}
+      end
+     end   
 
       private
   
       def user_params
-        params.permit(:name, :photo, :password_digest)
+       params.require(:user).permit(:name, :photo, :password)
       end
 
 end

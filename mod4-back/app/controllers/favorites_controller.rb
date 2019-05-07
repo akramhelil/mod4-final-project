@@ -1,9 +1,14 @@
 class FavoritesController < ApplicationController
 
+    def index
+      favorites = Favorite.all
+      render json: favorites
+    end
+
     def create
         @favorite = Favorite.create(favorite_params)
         render json: @favorite
-      end  
+      end
 
       def destroy
         @favorite = Favorite.find_by(id: params[:id])
