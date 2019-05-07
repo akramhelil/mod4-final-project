@@ -8,7 +8,7 @@ export default class UserLibrary extends Component {
     render() {
         return (
             <div style={userlibStyle}>
-                <VideoCard video={this.props.video} />
+                <VideoCard video={this.props.video} addToFav={this.addToFav}/>
                 <br/>
 
             </div>

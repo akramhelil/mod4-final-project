@@ -8,6 +8,7 @@ import { Route, Switch } from 'react-router-dom'
 import SignUp from './SignUp'
 // import { Fragment } from 'react'
 import UserLogin from './UserLogin';
+import FavVideo from './FavVideo';
 
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
@@ -24,7 +25,8 @@ class App extends React.Component {
   state = {
     videos: [],
     userFav: [],
-    currentUser: null
+    currentUser: null,
+    favVideo: [] 
   }
 
   // //fetch the videos for the fornt page video Dex
@@ -45,10 +47,22 @@ class App extends React.Component {
   }
 
 
+fetchFav = () => {
+    fetch(`http://localhost:4000/users/${this.state.currentUser.id}`)
+    .then(res => res.json())
+    .then(response => this.setState({
+      favVideo: response.videos
+      }))
+}
+
+
 
   componentDidMount() {
     this.fetchVideos()
-    // this is where we will set the localStorage
+    if (this.state.currentUser) {
+      
+      this.fetchFav()
+    }
   }
 
   createVideo = (videoObj) => {
@@ -81,7 +95,7 @@ class App extends React.Component {
         'Content-Type': 'application/json',
         'Accept': 'application/json'
       },
-      body: JSON.stringify(favVideo)
+      body: JSON.stringify({favorite: favVideo})
     })
       .then(res => res.json())
       .then(console.log)
@@ -105,6 +119,11 @@ class App extends React.Component {
         <Route path='/signup' render={(props) => {
           return <SignUp setCurrentUser={this.setCurrentUser} {...props} />
         }} />
+        <Route path='/favorites' render={(props) => {
+          return <FavVideo
+            currentUser={this.state.currentUser}
+            favVideo={this.state.favVideo}/>
+        }} />
         <Route path='/login' render={(props) => {
           return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
         }} />
@@ -113,6 +132,7 @@ class App extends React.Component {
             <Grid.Column width={5}>
               <Route path="/" render={(routeProps) => {
                 return <NavPanel
+                   addToFav={this.addToFav}
                   fetchVideos={this.fetchVideos}
                   userFav={Data.items}
                   setCurrentUser={this.setCurrentUser}

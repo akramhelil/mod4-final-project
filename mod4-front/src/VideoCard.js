@@ -39,8 +39,28 @@ export default class VideoCard extends Component {
             .then(console.log)
     }
 
+    handleFav = () => {
+        const favVid = {
+            title: this.props.video.snippet.title,
+            url: this.props.video.id.videoId,
+            likes: 1,
+            thumbnails:this.props.video.snippet.thumbnails.high.url
+        }
+        fetch('http://localhost:4000/videos', {
+            method: 'POST',
+            headers:
+                { 'Content-Type': 'application/json', 'Accept': 'application/json' },
+            body: JSON.stringify(favVid)
+        })
+            .then(res => res.json())
+            .then((favVid) => {
+                this.props.addToFav(favVid)
+            })
+    }
+
 
     render() {
+        // console.log(this.props)
         return (
             <Card>
                 <Image src={this.props.video.snippet.thumbnails.high.url}
@@ -67,7 +87,7 @@ export default class VideoCard extends Component {
                         </Button>
                         <Button
                             secondary style={buttonStyle}
-                            onClick={() => this.props.addToFav(this.props.video)} >
+                            onClick={this.handleFav} >
                             Add To Library
                         </Button>
                     </Modal>

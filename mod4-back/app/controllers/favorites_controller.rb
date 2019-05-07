@@ -6,8 +6,8 @@ class FavoritesController < ApplicationController
     end
 
     def create
-        @favorite = Favorite.create(favorite_params)
-        render json: @favorite
+        favorite = Favorite.find_or_create_by(favorite_params)
+        render json: favorite
       end
 
       def destroy
@@ -15,6 +15,7 @@ class FavoritesController < ApplicationController
         @favorite.destroy
         render json: @favorite
       end
+      private 
 
       def favorite_params
         params.require(:favorite).permit(:user_id, :video_id)

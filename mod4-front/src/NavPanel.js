@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import SearchCom from './SearchCom';
 import {Container, Button} from 'semantic-ui-react'
 import UserLibrary from './UserLibrary';
-import UserLogin from './UserLogin'
+// import UserLogin from './UserLogin'
 // import SignUp from './SignUp';
-import { Link, Route } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 
 
@@ -38,16 +38,19 @@ export default class NavPanel extends Component {
                 </div>
                 <div style={searchStyle}>
                  </div>
-                    {this.props.currentUser ? 
-                    <div>
+                    {this.props.currentUser ?
+                     <div>
+                            <h2>Welcome Back {this.props.currentUser.name}!!</h2>
+                            <Link to="/favorites">Favorites</Link>
                     <h2 style={searchStyle}> 
-                    User Favorite Library
+                    Recommened Videos
                      <hr />
-                  </h2>
+                    </h2>
                      {this.props.userFav.slice(0, 5).map(video => <UserLibrary
                         key={video.id.videoId}
                         video={video}
-                        style={searchStyle}
+                         style={searchStyle}
+                         addToFav={this.addToFav}
                         setCurrentUser={this.props.setCurrentUser}
                         />
                        )}
