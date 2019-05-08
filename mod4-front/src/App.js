@@ -9,6 +9,7 @@ import SignUp from './SignUp'
 // import { Fragment } from 'react'
 import UserLogin from './UserLogin';
 import FavVideo from './FavVideo';
+// import VideoLib from './container/VideoLib';
 
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
@@ -26,7 +27,8 @@ class App extends React.Component {
     videos: [],
     userFav: [],
     currentUser: null,
-    favVideo: [] 
+    favVideo: [],
+    localVideos:[]
   }
 
   // //fetch the videos for the fornt page video Dex
@@ -84,7 +86,6 @@ fetchFav = () => {
   }
 
   addToFav = (favVid) => {
-    console.log(favVid)
     this.setState((prevState) => ({
       favVideo: [...prevState.favVideo,favVid]
   }))
@@ -123,11 +124,15 @@ fetchFav = () => {
     })
   }
 
+  handleDelete = () => {
+    console.log("Deleting ...")
+  }
+
 
 
   render() {
     // console.log(this.state.currentUser)
-    console.log(this.state.favVideo)
+    // console.log(this.state.favVideo)
     return (
       <Switch>
         <Route path='/signup' render={(props) => {
@@ -141,6 +146,7 @@ fetchFav = () => {
         <Route path='/login' render={(props) => {
           return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
         }} />
+        {/* <Route path='/videos' component={<VideoLib />} /> */}
         <Grid>
           <Grid.Row>
             <Grid.Column width={5}>

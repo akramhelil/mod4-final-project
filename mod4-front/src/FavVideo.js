@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import FavVideoCard from './FavVideoCard';
-import { Card,Container } from 'semantic-ui-react';
+import { Card,Container, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
 
 const dexStyle = {
@@ -11,8 +11,14 @@ class FavVideo extends Component {
 
 
     render() {
-        console.log(this.props)
-            return (
+        // console.log(this.props)
+        return (
+            <React.Fragment>
+                <Button secondary>
+                        <Link to="/" style={{ color: '#FFF'}} >
+                            <h3>Go Back</h3>
+                         </Link>
+                    </Button>
                 <div style={dexStyle}>
                      <div >
                         <Container floated="right">   
@@ -20,16 +26,16 @@ class FavVideo extends Component {
                                     {this.props.favVideo.map(video =>
                                         <FavVideoCard
                                         video={video}
-                                         key={video.id}
+                                            key={video.id}
+                                            handleDelete={this.props.handleDelete}
                                         />
                                      )}
+                   
                             </Card.Group>  
                          </Container>   
                     </div>
-                     <Link to="/">
-                    <h1>Go Back</h1>
-                     </Link>
-                 </div>
+                </div>
+             </React.Fragment>
         );
     }
 }

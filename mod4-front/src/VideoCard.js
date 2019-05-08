@@ -85,11 +85,13 @@ export default class VideoCard extends Component {
                             secondary style={buttonStyle}>
                             <Icon name='heart' /> Like
                         </Button>
+                        {this.props.currentUser ?
                         <Button
                             secondary style={buttonStyle}
                             onClick={this.handleFav} >
                             Add To Library
-                        </Button>
+                        </Button> : null
+                         }
                     </Modal>
                     &nbsp;&nbsp;&nbsp;
                     <Button as='div' labelPosition='right'>

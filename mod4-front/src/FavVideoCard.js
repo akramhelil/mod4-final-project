@@ -14,7 +14,7 @@ class FavVideoCard extends Component {
     render() {
         return (
             <div>
-                 <Card>
+                 <Card style={buttonStyle}>
                 <Image src={this.props.video.thumbnails}
                     alt="thubmnail"/>
                 <Card.Content>
@@ -32,7 +32,7 @@ class FavVideoCard extends Component {
                             </Iframe>
                             </Modal.Content>
                             </Modal>
-                        <Button onClick={this.handleDelete}
+                        <Button onClick={this.props.handleDelete}
                             secondary style={buttonStyle}>
                             <Icon name='trash' /> Delete
                         </Button>

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import SearchCom from './SearchCom';
-import {Container, Button} from 'semantic-ui-react'
+import {Container, Button, Segment} from 'semantic-ui-react'
 import UserLibrary from './UserLibrary';
 // import UserLogin from './UserLogin'
 // import SignUp from './SignUp';
@@ -17,7 +17,7 @@ const searchStyle = {
 const button = {
     margin: 50,
     alignItems: "center",
-    textAlign: "center"
+    textAlign: "center",
 }
 
 
@@ -39,11 +39,26 @@ export default class NavPanel extends Component {
                 <div style={searchStyle}>
                  </div>
                     {this.props.currentUser ?
-                     <div>
+                        <div>
+                           <Segment textAlign="center">
                             <h2>Welcome Back {this.props.currentUser.name}!!</h2>
-                            <Button style={button}>
-                                <Link to="/favorites">Favorites</Link>
+                            <br/>
+                            <img
+                                src={this.props.currentUser.photo}
+                                alt="pforile"
+                                height="100"
+                                width="100"
+                                 />
+                            <br />
+                            <React.Fragment>
+                            <Button  secondary >
+                                <Link to="/favorites" style={{ color: '#FFF' }}>Favorites</Link>
                             </Button>    
+                            <Button  secondary style={button}>
+                                <Link to="/videos" style={{ color: '#FFF' }}>Videos</Link>
+                                </Button>  
+                            </React.Fragment>    
+                         </Segment>
                     <h2 style={searchStyle}> 
                     Recommened Videos
                      <hr />
@@ -58,11 +73,11 @@ export default class NavPanel extends Component {
                        )}
                         </div> :
                         <React.Fragment>
-                            <Button style={button}>
-                             <Link to="/signup">Sign Up</Link>
+                            <Button secondary  style={button}>
+                             <Link to="/signup" style={{ color: '#FFF' }} >Sign Up</Link>
                             </Button>
-                            <Button style={button}>      
-                             <Link to="/login">Log In</Link>
+                            <Button  secondary  style={button}>      
+                                <Link to="/login" style={{ color: '#FFF' }} >Log In</Link>
                             </Button>
                         </React.Fragment>
                     // <div style={searchStyle}>

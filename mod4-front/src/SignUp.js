@@ -59,7 +59,7 @@ class SignUp extends Component {
                         <Form.Input onChange={this.onChange} fluid placeholder='Photo Url' name="photo" />
                         <Form.Input onChange={this.onChange} fluid placeholder='Password' name="password" type="password" />
                         <Form.Input onChange={this.onChange} fluid placeholder='Confrim Password' name="password_confirmation" type="password" />
-                        <Button type='submit'>Submit</Button>
+                        <Button inverted type='submit'>Submit</Button>
                     </Form>
                 </Segment>
             </div>

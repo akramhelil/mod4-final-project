@@ -67,7 +67,7 @@ export default class UserLogin extends Component {
                         <Message success
                             header='You all Set!'
                             content="Happy Browsing!!!" />
-                        <Button type='submit'>Login</Button>
+                        <Button inverted type='submit'>Login</Button>
                     </Form>
                 </Segment>
             </Menu>
