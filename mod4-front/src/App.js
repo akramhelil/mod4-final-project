@@ -50,9 +50,10 @@ class App extends React.Component {
 fetchFav = () => {
     fetch(`http://localhost:4000/users/${this.state.currentUser.id}`)
     .then(res => res.json())
-    .then(response => this.setState({
-      favVideo: response.videos
-      }))
+      .then(response => this.setState({
+        favVideo: response.videos
+      })
+      )
 }
 
 
@@ -60,7 +61,6 @@ fetchFav = () => {
   componentDidMount() {
     this.fetchVideos()
     if (this.state.currentUser) {
-      
       this.fetchFav()
     }
   }
@@ -84,10 +84,17 @@ fetchFav = () => {
   }
 
   addToFav = (favVid) => {
+    console.log(favVid)
+    this.setState((prevState) => ({
+      favVideo: [...prevState.favVideo,favVid]
+  }))
+ 
     const favVideo = {
       video_id: favVid.id,
       user_id: this.state.currentUser.id
     }
+    
+
     fetch('http://localhost:4000/favorites', {
       method: 'POST',
       headers:
@@ -98,13 +105,19 @@ fetchFav = () => {
       body: JSON.stringify({favorite: favVideo})
     })
       .then(res => res.json())
-      .then(console.log)
+      .then(newFav => {
+        this.setState({
+          favVideo: [...this.state.favVideo, favVid]
+      })
+    })
+    this.fetchFav()
 
   }
 
   setCurrentUser = (response) => {
     this.setState({
-      currentUser: response.user
+      currentUser: response.user,
+      favVideo: response.user.videos
     }, () => {
       localStorage.setItem("token", response.token)
     })
@@ -113,7 +126,8 @@ fetchFav = () => {
 
 
   render() {
-    console.log(this.state.currentUser)
+    // console.log(this.state.currentUser)
+    console.log(this.state.favVideo)
     return (
       <Switch>
         <Route path='/signup' render={(props) => {

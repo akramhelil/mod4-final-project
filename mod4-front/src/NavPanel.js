@@ -41,7 +41,9 @@ export default class NavPanel extends Component {
                     {this.props.currentUser ?
                      <div>
                             <h2>Welcome Back {this.props.currentUser.name}!!</h2>
-                            <Link to="/favorites">Favorites</Link>
+                            <Button style={button}>
+                                <Link to="/favorites">Favorites</Link>
+                            </Button>    
                     <h2 style={searchStyle}> 
                     Recommened Videos
                      <hr />

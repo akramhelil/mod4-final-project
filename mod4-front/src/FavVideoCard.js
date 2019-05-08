@@ -18,7 +18,7 @@ class FavVideoCard extends Component {
                 <Image src={this.props.video.thumbnails}
                     alt="thubmnail"/>
                 <Card.Content>
-                    <Card.Header>{this.props.video.title}</Card.Header>
+                    <Card.Header>{this.props.video.title.slice(0,35)}</Card.Header>
                 </Card.Content>
                 <Card.Content extra>
                     <Modal size="small"
