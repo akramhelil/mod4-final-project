@@ -2,11 +2,8 @@ import React, { Component } from 'react'
 import SearchCom from './SearchCom';
 import {Container, Button, Segment} from 'semantic-ui-react'
 import UserLibrary from './UserLibrary';
-// import UserLogin from './UserLogin'
-// import SignUp from './SignUp';
+
 import { Link } from 'react-router-dom'
-
-
 
 const searchStyle = {
     margin: 20,
@@ -29,7 +26,8 @@ export default class NavPanel extends Component {
                 <div style={searchStyle}>
                     <div>
                         <img src="./logo.png"
-                        alt="logo" width="150" height="150" />
+                                alt="logo" width="150" height="150" />
+                            <h1>Tuberary</h1>
                     </div>
                 <hr/>
                     <br />
