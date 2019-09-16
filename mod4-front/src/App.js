@@ -118,7 +118,7 @@ fetchFav = () => {
   setCurrentUser = (response) => {
     this.setState({
       currentUser: response.user,
-      favVideo: response.user.videos
+      favVideo: response.user.videos ? response.user.videos : 0
     }, () => {
       localStorage.setItem("token", response.token)
     })

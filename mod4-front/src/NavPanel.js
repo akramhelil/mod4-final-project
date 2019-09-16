@@ -8,11 +8,12 @@ import { Link } from 'react-router-dom'
 const searchStyle = {
     margin: 20,
     alignItems: "center",
-    textAlign: "center"
+    textAlign: "center",
+    color: "white"
 }
 
 const button = {
-    margin: 50,
+    margin: "5%",
     alignItems: "center",
     textAlign: "center",
 }
@@ -26,11 +27,11 @@ export default class NavPanel extends Component {
                 <div style={searchStyle}>
                     <div>
                         <img src="./logo.png"
-                                alt="logo" width="150" height="150" />
+                                alt="logo" width="150" />
                             <h1>Tuberary</h1>
                     </div>
                 <hr/>
-                    <br />
+                <br />
                     
                 <SearchCom fetchVideos={this.props.fetchVideos} />
                 </div>
@@ -50,10 +51,10 @@ export default class NavPanel extends Component {
                             <br />
                             <React.Fragment>
                             <Button  secondary >
-                                <Link to="/favorites" style={{ color: '#FFF' }}>Favorites</Link>
+                                <Link to="/favorites" style={searchStyle}>Favorites</Link>
                             </Button>    
                             <Button  secondary style={button}>
-                                <Link to="/videos" style={{ color: '#FFF' }}>Videos</Link>
+                                <Link to="/videos" style={searchStyle}>Videos</Link>
                                 </Button>  
                             </React.Fragment>    
                          </Segment>

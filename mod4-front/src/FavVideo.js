@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React from 'react';
 import FavVideoCard from './FavVideoCard';
 import { Card,Container, Button } from 'semantic-ui-react';
 import { Link } from 'react-router-dom';
@@ -7,7 +7,7 @@ const dexStyle = {
     margin: 20,
     alignItems: "center"
 }
-class FavVideo extends Component {
+class FavVideo extends React.Component {
 
 
     render() {
