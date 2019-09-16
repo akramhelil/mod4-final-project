@@ -6,17 +6,12 @@ import UserLibrary from './UserLibrary';
 import { Link } from 'react-router-dom'
 
 const searchStyle = {
-    margin: 20,
+    margin: "10%",
     alignItems: "center",
     textAlign: "center",
     color: "white"
 }
 
-const button = {
-    margin: "5%",
-    alignItems: "center",
-    textAlign: "center",
-}
 
 
 export default class NavPanel extends Component {
@@ -53,7 +48,7 @@ export default class NavPanel extends Component {
                             <Button  secondary >
                                 <Link to="/favorites" style={searchStyle}>Favorites</Link>
                             </Button>    
-                            <Button  secondary style={button}>
+                            <Button  secondary style={searchStyle}>
                                 <Link to="/videos" style={searchStyle}>Videos</Link>
                                 </Button>  
                             </React.Fragment>    
@@ -72,10 +67,10 @@ export default class NavPanel extends Component {
                        )}
                         </div> :
                         <React.Fragment>
-                            <Button secondary  style={button}>
+                            <Button secondary  style={searchStyle}>
                              <Link to="/signup" style={{ color: '#FFF' }} >Sign Up</Link>
                             </Button>
-                            <Button  secondary  style={button}>      
+                            <Button  secondary  style={searchStyle}>      
                                 <Link to="/login" style={{ color: '#FFF' }} >Log In</Link>
                             </Button>
                         </React.Fragment>

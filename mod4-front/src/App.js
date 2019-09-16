@@ -116,12 +116,20 @@ fetchFav = () => {
   }
 
   setCurrentUser = (response) => {
-    this.setState({
-      currentUser: response.user,
-      favVideo: response.user.videos ? response.user.videos : 0
-    }, () => {
-      localStorage.setItem("token", response.token)
-    })
+    if (response.user) {
+      this.setState({
+        currentUser: response.user,
+        favVideo: response.user.videos
+      }, () => {
+        localStorage.setItem("token", response.token)
+      })
+    } else {
+      this.setState({
+        currentUser: response.user,
+      }, () => {
+        localStorage.setItem("token", response.token)
+      })
+    }
   }
 
   handleDelete = () => {
