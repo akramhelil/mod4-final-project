@@ -132,8 +132,8 @@ fetchFav = () => {
     }
   }
 
-  handleDelete () {
-    console.log("Deleting ...")
+  handleDelete (id) {
+    console.log("Deleting ...", id)
   }
 
 

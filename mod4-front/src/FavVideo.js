@@ -21,7 +21,7 @@ function FavVideo(props) {
                             <Card.Group itemsPerRow={3} > 
                                     {props.favVideo.map(video =>
                                         <FavVideoCard
-                                        video={video}
+                                            video={video}
                                             key={video.id}
                                             handleDelete={props.handleDelete}
                                         />

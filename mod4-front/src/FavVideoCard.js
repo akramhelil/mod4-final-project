@@ -31,7 +31,7 @@ function FavVideoCard(props) {
                             </Modal.Content>
                     </Modal>
                     
-                        <Button onClick={props.handleDelete(props.video.id)}
+                        <Button onClick={e => props.handleDelete(props.video.id)}
                             secondary style={buttonStyle}>
                             <Icon name='trash' /> Delete
                         </Button>
