@@ -7,11 +7,7 @@ const dexStyle = {
     margin: 20,
     alignItems: "center"
 }
-class FavVideo extends React.Component {
-
-
-    render() {
-        // console.log(this.props)
+function FavVideo(props) {
         return (
             <React.Fragment>
                 <Button secondary>
@@ -23,21 +19,19 @@ class FavVideo extends React.Component {
                      <div >
                         <Container floated="right">   
                             <Card.Group itemsPerRow={3} > 
-                                    {this.props.favVideo.map(video =>
+                                    {props.favVideo.map(video =>
                                         <FavVideoCard
                                         video={video}
                                             key={video.id}
-                                            handleDelete={this.props.handleDelete()}
+                                            handleDelete={props.handleDelete}
                                         />
                                      )}
-                   
                             </Card.Group>  
                          </Container>   
                     </div>
                 </div>
              </React.Fragment>
         );
-    }
 }
 
 export default FavVideo;
