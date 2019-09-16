@@ -139,8 +139,7 @@ fetchFav = () => {
 
 
   render() {
-    // console.log(this.state.currentUser)
-    // console.log(this.state.favVideo)
+
     return (
       <Switch>
         <Route path='/signup' render={(props) => {
@@ -149,7 +148,8 @@ fetchFav = () => {
         <Route path='/favorites' render={(props) => {
           return <FavVideo
             currentUser={this.state.currentUser}
-            favVideo={this.state.favVideo}/>
+            favVideo={this.state.favVideo}
+            handleDelete= {this.handleDelete}/>
         }} />
         <Route path='/login' render={(props) => {
           return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
@@ -175,6 +175,7 @@ fetchFav = () => {
                   videos={this.state.videos}
                   addToFav={this.addToFav}
                   currentUser={this.state.currentUser}
+                  
                 />
               }} />
             </Grid.Column>
