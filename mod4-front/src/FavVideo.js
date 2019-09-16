@@ -27,7 +27,7 @@ class FavVideo extends React.Component {
                                         <FavVideoCard
                                         video={video}
                                             key={video.id}
-                                            handleDelete={this.props.handleDelete}
+                                            handleDelete={this.props.handleDelete()}
                                         />
                                      )}
                    
