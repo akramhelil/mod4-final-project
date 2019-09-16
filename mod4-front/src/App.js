@@ -1,15 +1,15 @@
 import React from 'react';
-import VideoDeck from './VideoDeck';
 import './assets/App.css';
-import NavPanel from './NavPanel';
 import { Grid } from 'semantic-ui-react';
-import Data from './data';
 import { Route, Switch } from 'react-router-dom'
+
+import Data from './data';
+import VideoDeck from './VideoDeck';
 import SignUp from './SignUp'
-// import { Fragment } from 'react'
+import NavPanel from './NavPanel';
 import UserLogin from './UserLogin';
 import FavVideo from './FavVideo';
-// import VideoLib from './container/VideoLib';
+
 
 const API_KEY = process.env.REACT_APP_MOD4_API_KEY;
 
@@ -132,7 +132,7 @@ fetchFav = () => {
     }
   }
 
-  handleDelete = () => {
+  handleDelete () {
     console.log("Deleting ...")
   }
 
