@@ -1,13 +1,10 @@
 import React, { Component } from 'react'
 import VideoCard from './VideoCard';
 
-const userlibStyle = {
-    marginLeft: 20
- }
 export default class UserLibrary extends Component {
     render() {
         return (
-            <div style={userlibStyle}>
+            <div >
                 <VideoCard video={this.props.video} addToFav={this.addToFav}/>
                 <br/>
 

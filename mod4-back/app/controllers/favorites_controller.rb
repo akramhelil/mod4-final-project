@@ -11,7 +11,7 @@ class FavoritesController < ApplicationController
       end
 
       def destroy
-        @favorite = Favorite.find_by(id: params[:id])
+        @favorite = Favorite.find_by(video_id: params[:id])
         @favorite.destroy
         render json: @favorite
       end

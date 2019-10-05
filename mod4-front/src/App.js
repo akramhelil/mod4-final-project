@@ -133,13 +133,23 @@ fetchFav = () => {
   }
 
   handleDelete (id) {
-    console.log("Deleting ...", id)
+
+    fetch(`http://localhost:4000/favorites/${id}`, {
+      method: 'delete',
+    })
+      .then(res => res.json())
+      .then(deletedVideo => {
+        console.log(this.state)
+        this.setState({
+          favVideo: [...this.state.favVideo.filter(video => video.id === deletedVideo.id)]
+        })
+      })
   }
 
 
 
   render() {
-
+    console.log(this.state)
     return (
       <Switch>
         <Route path='/signup' render={(props) => {
