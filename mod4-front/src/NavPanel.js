@@ -74,12 +74,7 @@ export default class NavPanel extends Component {
                                 <Link to="/login" style={{ color: '#FFF' }} >Log In</Link>
                             </Button>
                         </React.Fragment>
-                    // <div style={searchStyle}>
-                    //     <UserLogin
-                    //         setCurrentUser={this.props.setCurrentUser} />
-                    // </div>
-                    }
-                  
+                    }    
                 </Container>
             </React.Fragment>
         )

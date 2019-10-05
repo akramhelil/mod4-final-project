@@ -10,20 +10,22 @@ const dexStyle = {
 function VideoDeck(props) {
 
     return (
-        <div style={dexStyle}>
-            <Container floated="right">   
-                <Card.Group  itemsPerRow={3} >  
-                {props.videos.map(video =>
-                    <VideoCard
+        <React.Fragment>
+            <div style={dexStyle}>
+                <Container floated="right">   
+                    <Card.Group  itemsPerRow={3} >  
+                    {props.videos.map(video =>
+                        <VideoCard
                         video={video}
                         key={video.id.videoId}
                         addToFav={props.addToFav}
                         currentUser={props.currentUser}
                         />
-                    )}
-                </Card.Group>  
-            </Container>   
-        </div>
+                        )}
+                    </Card.Group>  
+                </Container>   
+            </div>
+    </React.Fragment>
     )
 }
 

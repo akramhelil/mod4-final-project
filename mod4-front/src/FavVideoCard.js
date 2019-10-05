@@ -9,9 +9,9 @@ const buttonStyle = {
 }
 
 function FavVideoCard(props) {
-    console.log(props)
+    // console.log(props)
     return (
-        <div>
+        <React.Fragment>
             <Card style={buttonStyle}>
                 <Image src={props.video.thumbnails}
                     alt="thubmnail"/>
@@ -37,7 +37,7 @@ function FavVideoCard(props) {
                         </Button>
                 </Card.Content>
             </Card>
-        </div>
+        </React.Fragment>
     )
 }
 
