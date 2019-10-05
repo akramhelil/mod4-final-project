@@ -7,6 +7,8 @@ const dexStyle = {
     margin: 20,
     alignItems: "center"
 }
+
+
 function VideoDeck(props) {
 
     return (

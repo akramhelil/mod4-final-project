@@ -68,7 +68,7 @@ fetchFav = () => {
   }
 
   createVideo = (videoObj) => {
-    console.log(videoObj)
+    // console.log(videoObj)
     let newVideo = {
       title: videoObj.snippet.title,
       url: videoObj.id.videoId,
@@ -86,16 +86,20 @@ fetchFav = () => {
   }
 
   addToFav = (favVid) => {
-    this.setState((prevState) => ({
-      favVideo: [...prevState.favVideo,favVid]
-  }))
- 
+    if (this.state.currentUser) {
+      this.setState((prevState) => (
+        {favVideo: [...prevState.favVideo, favVid]}
+        ))
+    } else {
+      alert("Please Login")
+    }
+
     const favVideo = {
       video_id: favVid.id,
       user_id: this.state.currentUser.id
     }
     
-
+  
     fetch('http://localhost:4000/favorites', {
       method: 'POST',
       headers:
@@ -112,8 +116,8 @@ fetchFav = () => {
       })
     })
     this.fetchFav()
-
   }
+ 
 
   setCurrentUser = (response) => {
     if (response.user) {
@@ -132,14 +136,14 @@ fetchFav = () => {
     }
   }
 
-  handleDelete (id) {
+  handleDelete = (id) => {
 
     fetch(`http://localhost:4000/favorites/${id}`, {
       method: 'delete',
     })
       .then(res => res.json())
       .then(deletedVideo => {
-        console.log(this.state)
+        // console.log(this.state)
         this.setState({
           favVideo: [...this.state.favVideo.filter(video => video.id === deletedVideo.id)]
         })
@@ -149,51 +153,52 @@ fetchFav = () => {
 
 
   render() {
-    console.log(this.state)
     return (
-      <Switch>
-        <Route path='/signup' render={(props) => {
-          return <SignUp setCurrentUser={this.setCurrentUser} {...props} />
-        }} />
-        <Route path='/favorites' render={(props) => {
-          return <FavVideo
-            currentUser={this.state.currentUser}
-            favVideo={this.state.favVideo}
-            handleDelete= {this.handleDelete}/>
-        }} />
-        <Route path='/login' render={(props) => {
-          return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
-        }} />
-        {/* <Route path='/videos' component={<VideoLib />} /> */}
-        <Grid>
-          <Grid.Row>
-            <Grid.Column width={5}>
-              <Route path="/" render={(routeProps) => {
-                return <NavPanel
-                   addToFav={this.addToFav}
-                  fetchVideos={this.fetchVideos}
-                  userFav={Data.items}
-                  setCurrentUser={this.setCurrentUser}
-                  currentUser={this.state.currentUser}
-                  {...routeProps} />
-              }} />
-            </Grid.Column>
-            <Grid.Column width={10} style={dexStyle}>
-              <Route path='/' render={(routeProps) => {
-                return <VideoDeck
-                  {...routeProps}
-                  videos={this.state.videos}
-                  addToFav={this.addToFav}
-                  currentUser={this.state.currentUser}
-                  
-                />
-              }} />
-            </Grid.Column>
-          </Grid.Row>
-        </Grid>
-      </Switch>
+      <React.Fragment>
+        <Switch>
+          <Route path='/signup' render={(props) => {
+            return <SignUp setCurrentUser={this.setCurrentUser} {...props} />
+          }} />
+          <Route path='/favorites' render={(props) => {
+            return <FavVideo
+              currentUser={this.state.currentUser}
+              favVideo={this.state.favVideo}
+              handleDelete= {this.handleDelete}/>
+          }} />
+          <Route path='/login' render={(props) => {
+            return <UserLogin setCurrentUser={this.setCurrentUser} {...props} />
+          }} />
+          {/* <Route path='/videos' component={<VideoLib />} /> */}
+          <Grid>
+            <Grid.Row>
+              <Grid.Column width={5}>
+                <Route path="/" render={(routeProps) => {
+                  return <NavPanel
+                    addToFav={this.addToFav}
+                    fetchVideos={this.fetchVideos}
+                    userFav={Data.items}
+                    setCurrentUser={this.setCurrentUser}
+                    currentUser={this.state.currentUser}
+                    {...routeProps} />
+                }} />
+              </Grid.Column>
+              <Grid.Column width={10} style={dexStyle}>
+                <Route path='/' render={(routeProps) => {
+                  return <VideoDeck
+                    {...routeProps}
+                    videos={this.state.videos}
+                    addToFav={this.addToFav}
+                    currentUser={this.state.currentUser}
+                    
+                  />
+                }} />
+              </Grid.Column>
+            </Grid.Row>
+          </Grid>
+          </Switch>
+      </React.Fragment>
     )
-  }
+  } 
 }
 
 export default App;
