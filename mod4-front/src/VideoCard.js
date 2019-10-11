@@ -15,10 +15,11 @@ export default class VideoCard extends Component {
         likes: 0
     }
 
-    handleLikes = () => {
+    handleLikes = (video) => {
+        console.log('Like Clicked', video)
         this.setState({
             likes: this.state.likes + 1
-        }, this.likesFetch())
+        }, () => this.likesFetch())
     }
 
     likesFetch = () => {
@@ -82,8 +83,8 @@ export default class VideoCard extends Component {
                                     allowFullscreen={true}> title='videos'
                                 </Iframe>
                             </Modal.Content>
-                            <Button onClick={this.handleLikes}
-                                secondary style={buttonStyle}>
+                            <Button onClick={()=> this.handleLikes(this.props.video)}
+                                 style={buttonStyle}>
                                 <Icon name='heart' /> Like
                             </Button>
                             {this.props.currentUser ?

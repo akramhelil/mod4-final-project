@@ -8,6 +8,7 @@ class VideosController < ApplicationController
     def create
         video = Video.find_by(url: params[:url])
       if video
+        byebug
         video.update_attributes(likes: video.likes +=1 )
         # video.save
       else
